@@ -21,8 +21,8 @@ export class MoviesController {
   private async generateNewQr() {
     const { id } = this.moviesService.generateNewSet();
     this.latestId = id;
-    const deployUrl = `https://qr-movie-backend.onrender.com/movies/view/${id}`;
-    const url = deployUrl || `http://localhost:3000/movies/view/${id}`;
+    const deployUrl = `https://qr-movie-frontend.vercel.app/movies/view/${id}`;
+    const url = deployUrl;
     this.latestQr = await this.qrCodeService.generateQrCode(url);
   }
 
@@ -37,6 +37,7 @@ export class MoviesController {
   @Get('view/:id')
   getMovies(@Param('id') id: string): { movies: Movie[] } | { error: string } {
     const movies = this.moviesService.getMoviesById(id);
+    console.log(movies);
     if (!movies) {
       return { error: 'Invalid ID' };
     }
