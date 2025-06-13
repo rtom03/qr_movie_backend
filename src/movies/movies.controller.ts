@@ -15,7 +15,7 @@ export class MoviesController {
 
     setInterval(() => {
       this.generateNewQr();
-    }, 10_000); // 10 seconds
+    }, 10_000); // for 10 seconds
   }
 
   private async generateNewQr() {
@@ -37,7 +37,6 @@ export class MoviesController {
   @Get('view/:id')
   getMovies(@Param('id') id: string): { movies: Movie[] } | { error: string } {
     const movies = this.moviesService.getMoviesById(id);
-    console.log(movies);
     if (!movies) {
       return { error: 'Invalid ID' };
     }

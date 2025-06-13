@@ -9,12 +9,11 @@ export interface Movie {
   Released?: string;
   Genre?: string;
   Director?: string;
-  // Add any other fields present in your data
 }
 
 @Injectable()
 export class MoviesService {
-  private storage = new Map<string, Movie[]>(); // UUID -> 10 random movies
+  private storage = new Map<string, Movie[]>();
 
   getRandomMovies(): Movie[] {
     const shuffled = [...MOVIESDATA].sort(() => 0.5 - Math.random());
