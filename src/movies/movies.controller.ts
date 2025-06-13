@@ -21,7 +21,8 @@ export class MoviesController {
   private async generateNewQr() {
     const { id } = this.moviesService.generateNewSet();
     this.latestId = id;
-    const url = `http://localhost:3000/movies/view/${id}`;
+    const deployUrl = `https://qr-movie-backend.onrender.com/${id}`;
+    const url = deployUrl || `http://localhost:3000/movies/view/${id}`;
     this.latestQr = await this.qrCodeService.generateQrCode(url);
   }
 
