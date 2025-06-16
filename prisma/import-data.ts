@@ -1,6 +1,5 @@
 import { PrismaClient } from '@prisma/client';
 import * as fs from 'fs';
-// import { PrismaClient } from 'generated/prisma';
 
 interface Movie {
   Title: string;
