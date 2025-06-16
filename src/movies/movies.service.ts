@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { MOVIESDATA } from './data';
+// import { MOVIESDATA } from './data';
 import { v4 as uuidv4 } from 'uuid';
 import { DatabaseService } from 'src/database/database.service';
 
@@ -36,9 +36,9 @@ export class MoviesService {
   async getRandomMovies(): Promise<Movie[]> {
     const dbMovies = await this.moviesData.movies.findMany();
 
-    const shuffled =
-      dbMovies.sort(() => 0.5 - Math.random()) ||
-      [...MOVIESDATA].sort(() => 0.5 - Math.random());
+    const shuffled = dbMovies.sort(() => 0.5 - Math.random());
+    //  ||
+    // [...MOVIESDATA].sort(() => 0.5 - Math.random());
     return shuffled.slice(0, 10);
   }
 
