@@ -19,10 +19,11 @@ export class MoviesController {
   }
 
   private async generateNewQr() {
-    const { id } = this.moviesService.generateNewSet();
+    const { id } = await this.moviesService.generateNewSet();
     this.latestId = id;
-    const deployUrl = `https://qr-movie-frontend.vercel.app/movies/view/${id}`;
-    const url = deployUrl;
+    const productionUrl = `https://qr-movie-frontend.vercel.app/movies/view/${id}`;
+    const developmentUrl = `http://localhost:8000/movies/view/${id}`;
+    const url = productionUrl || developmentUrl;
     this.latestQr = await this.qrCodeService.generateQrCode(url);
   }
 
